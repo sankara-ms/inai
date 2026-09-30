@@ -1,0 +1,210 @@
+{
+  "name": "inai",
+  "displayName": "INAI",
+  "description": "Provider-agnostic AI coding assistant with safe edits, agent tools, and local-first defaults (Ollama).",
+  "version": "0.1.0",
+  "publisher": "inai",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "AI",
+    "Programming Languages",
+    "Machine Learning",
+    "Other"
+  ],
+  "keywords": [
+    "ai",
+    "chat",
+    "ollama",
+    "copilot",
+    "agent",
+    "assistant"
+  ],
+  "icon": "media/icon.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sankara-ms/inai.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sankara-ms/inai/issues"
+  },
+  "homepage": "https://github.com/sankara-ms/inai#readme",
+  "main": "./dist/extension.js",
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "inai",
+          "title": "INAI",
+          "icon": "media/icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "inai": [
+        {
+          "type": "webview",
+          "id": "inai.chat",
+          "name": "Chat"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "inai.openChat",
+        "title": "INAI: Open Chat"
+      },
+      {
+        "command": "inai.addSelectionToContext",
+        "title": "INAI: Add Selection to Context"
+      },
+      {
+        "command": "inai.addFileToContext",
+        "title": "INAI: Add File to Context"
+      },
+      {
+        "command": "inai.pickModel",
+        "title": "INAI: Pick Model"
+      },
+      {
+        "command": "inai.setApiKey",
+        "title": "INAI: Set Provider API Key"
+      },
+      {
+        "command": "inai.clearApiKey",
+        "title": "INAI: Clear Provider API Key"
+      },
+      {
+        "command": "inai.newChat",
+        "title": "INAI: New Chat"
+      },
+      {
+        "command": "inai.revertSnapshot",
+        "title": "INAI: Revert to Snapshot"
+      },
+      {
+        "command": "inai.stop",
+        "title": "INAI: Stop Generation"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "inai.addSelectionToContext",
+          "group": "inai@1",
+          "when": "editorHasSelection"
+        }
+      ],
+      "explorer/context": [
+        {
+          "command": "inai.addFileToContext",
+          "group": "inai@1"
+        }
+      ]
+    },
+    "keybindings": [
+      {
+        "command": "inai.addSelectionToContext",
+        "key": "ctrl+l",
+        "mac": "cmd+l",
+        "when": "editorTextFocus"
+      }
+    ],
+    "configuration": {
+      "title": "INAI",
+      "properties": {
+        "inai.provider": {
+          "type": "string",
+          "enum": [
+            "ollama",
+            "gemini",
+            "groq",
+            "openrouter"
+          ],
+          "default": "ollama",
+          "description": "Active AI provider."
+        },
+        "inai.ollama.baseUrl": {
+          "type": "string",
+          "default": "http://localhost:11434",
+          "description": "Base URL for the local Ollama server."
+        },
+        "inai.ollama.numCtx": {
+          "type": "number",
+          "default": 16384,
+          "description": "Context window size (num_ctx) passed to Ollama."
+        },
+        "inai.model": {
+          "type": "string",
+          "default": "",
+          "description": "Currently selected model id. Empty means auto/first available."
+        },
+        "inai.fallbackProvider": {
+          "type": "string",
+          "enum": [
+            "",
+            "ollama",
+            "gemini",
+            "groq",
+            "openrouter"
+          ],
+          "default": "",
+          "description": "Provider to fall back to on HTTP 429 (rate limit)."
+        },
+        "inai.temperature": {
+          "type": "number",
+          "default": 0.2,
+          "description": "Sampling temperature."
+        },
+        "inai.respectGitignore": {
+          "type": "boolean",
+          "default": true,
+          "description": "Respect .gitignore and .unboundignore when gathering context."
+        },
+        "inai.cloud.enabled": {
+          "type": "boolean",
+          "default": false,
+          "description": "OPTIONAL: enable cloud sync scaffolding (requires integrator-provided backend)."
+        },
+        "inai.cloud.supabaseUrl": {
+          "type": "string",
+          "default": "",
+          "description": "OPTIONAL: Supabase project URL for cloud sync."
+        },
+        "inai.cloud.googleClientId": {
+          "type": "string",
+          "default": "",
+          "description": "OPTIONAL: Google OAuth client ID for cloud sync."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run build",
+    "build": "node esbuild.js --production",
+    "watch": "node esbuild.js --watch",
+    "compile": "node esbuild.js",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint src --ext ts",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "package": "vsce package --no-dependencies"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "@types/vscode": "^1.85.0",
+    "@typescript-eslint/eslint-plugin": "^7.0.0",
+    "@typescript-eslint/parser": "^7.0.0",
+    "@vscode/vsce": "^2.24.0",
+    "esbuild": "^0.20.0",
+    "eslint": "^8.57.0",
+    "ovsx": "^0.9.0",
+    "typescript": "^5.4.0",
+    "vitest": "^1.4.0"
+  }
+}

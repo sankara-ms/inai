@@ -1,0 +1,7 @@
+# Files INAI should never read into context (in addition to .gitignore).
+# Uses gitignore-style syntax.
+*.env
+.env*
+*.pem
+*.key
+secrets/

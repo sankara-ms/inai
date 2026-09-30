@@ -1,0 +1,101 @@
+:root {
+  --gap: 8px;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: var(--vscode-font-family);
+  font-size: var(--vscode-font-size);
+  color: var(--vscode-foreground);
+  background: var(--vscode-sideBar-background);
+}
+#app { display: flex; flex-direction: column; height: 100vh; }
+#toolbar {
+  display: flex;
+  gap: var(--gap);
+  padding: var(--gap);
+  border-bottom: 1px solid var(--vscode-panel-border);
+  align-items: center;
+}
+#toolbar select, #toolbar button {
+  background: var(--vscode-button-secondaryBackground);
+  color: var(--vscode-button-secondaryForeground);
+  border: none;
+  padding: 4px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+#contextBar, #editsBar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  padding: 0 var(--gap);
+}
+#contextBar:empty, #editsBar:empty { padding: 0; }
+.chip {
+  background: var(--vscode-badge-background);
+  color: var(--vscode-badge-foreground);
+  border-radius: 10px;
+  padding: 2px 8px;
+  font-size: 11px;
+  display: inline-flex;
+  gap: 4px;
+  align-items: center;
+}
+.chip button {
+  background: none; border: none; color: inherit; cursor: pointer; padding: 0;
+}
+.edit-chip {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  background: var(--vscode-inputValidation-warningBackground, #6b5b00);
+  border-radius: 4px;
+  padding: 4px 6px;
+  font-size: 11px;
+}
+.edit-chip button {
+  background: var(--vscode-button-background);
+  color: var(--vscode-button-foreground);
+  border: none; border-radius: 3px; padding: 2px 6px; cursor: pointer;
+}
+#messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--gap);
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+}
+.msg { padding: 8px; border-radius: 6px; white-space: pre-wrap; word-break: break-word; }
+.msg.user { background: var(--vscode-input-background); }
+.msg.assistant { background: var(--vscode-editor-inactiveSelectionBackground); }
+.msg .role { font-weight: 600; font-size: 11px; opacity: 0.7; margin-bottom: 4px; }
+.tool-result {
+  font-family: var(--vscode-editor-font-family);
+  font-size: 11px;
+  background: var(--vscode-textCodeBlock-background);
+  padding: 6px; border-radius: 4px; margin-top: 4px;
+}
+.safety-SAFE { color: var(--vscode-testing-iconPassed, #3fb950); }
+.safety-REVIEW { color: var(--vscode-editorWarning-foreground, #d29922); }
+.safety-DANGEROUS { color: var(--vscode-editorError-foreground, #f85149); }
+footer { padding: var(--gap); border-top: 1px solid var(--vscode-panel-border); }
+#input {
+  width: 100%;
+  resize: vertical;
+  background: var(--vscode-input-background);
+  color: var(--vscode-input-foreground);
+  border: 1px solid var(--vscode-input-border, transparent);
+  border-radius: 4px;
+  padding: 6px;
+  font-family: inherit;
+}
+#controls { display: flex; gap: var(--gap); margin-top: 6px; }
+#controls button {
+  flex: 1;
+  background: var(--vscode-button-background);
+  color: var(--vscode-button-foreground);
+  border: none; padding: 6px; border-radius: 4px; cursor: pointer;
+}
+#controls button:disabled { opacity: 0.5; cursor: default; }
