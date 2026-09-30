@@ -1,11 +1,26 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128" fill="none">
   <defs>
-    <linearGradient id="g" x1="0" y1="0" x2="128" y2="128" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#7C3AED"/>
-      <stop offset="1" stop-color="#2563EB"/>
+    <linearGradient id="surface" x1="16" y1="12" x2="112" y2="116" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#11182F"/>
+      <stop offset="1" stop-color="#070B18"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(66 61) rotate(90) scale(58)">
+      <stop stop-color="#5B21B6" stop-opacity=".34"/>
+      <stop offset=".55" stop-color="#164E63" stop-opacity=".16"/>
+      <stop offset="1" stop-color="#070B18" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="signal" x1="28" y1="98" x2="101" y2="28" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#A855F7"/>
+      <stop offset=".52" stop-color="#6366F1"/>
+      <stop offset="1" stop-color="#22D3EE"/>
     </linearGradient>
   </defs>
-  <rect width="128" height="128" rx="28" fill="url(#g)"/>
-  <path d="M40 40 v34 a24 24 0 0 0 48 0 V40" stroke="#fff" stroke-width="10" stroke-linecap="round" fill="none"/>
-  <circle cx="64" cy="30" r="7" fill="#fff"/>
+  <rect width="128" height="128" rx="27" fill="url(#surface)"/>
+  <rect width="128" height="128" rx="27" fill="url(#glow)"/>
+  <path d="M64 15 107 40v48l-43 25-43-25V40l43-25Z" stroke="#94A3B8" stroke-opacity=".25" stroke-width="2"/>
+  <path d="M34 94V34l60 60V34" stroke="url(#signal)" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="34" cy="34" r="5.5" fill="#F8FAFC"/>
+  <circle cx="94" cy="94" r="5.5" fill="#F8FAFC"/>
+  <path d="m64 53 11 11-11 11-11-11 11-11Z" fill="#0B1227" stroke="#F8FAFC" stroke-width="3"/>
+  <path d="m64 60 4 4-4 4-4-4 4-4Z" fill="#22D3EE"/>
 </svg>

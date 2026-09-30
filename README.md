@@ -100,7 +100,7 @@ automatically.
 Package a VSIX locally:
 
 ```bash
-npm run package        # produces inai-0.1.0.vsix
+npm run package        # produces inai-0.1.1.vsix
 ```
 
 GitHub Release (attach the VSIX to a tagged release):
@@ -109,21 +109,21 @@ GitHub Release (attach the VSIX to a tagged release):
 # Create a tag and push it, then attach the VSIX to the GitHub Release.
 git tag v0.1.0
 git push origin v0.1.0
-gh release create v0.1.0 inai-0.1.0.vsix --repo sankara-ms/inai
+gh release create v0.1.0 inai-0.1.1.vsix --repo sankara-ms/inai
 ```
 
 Open VSX:
 
 ```bash
 # Requires an Open VSX account + namespace.
-npx ovsx publish inai-0.1.0.vsix -p "<OVSX_TOKEN>"
+npx ovsx publish inai-0.1.1.vsix -p "<OVSX_TOKEN>"
 ```
 
 VS Code Marketplace:
 
 ```bash
 # Requires an Azure DevOps publisher + Personal Access Token.
-npx @vscode/vsce publish --packagePath inai-0.1.0.vsix -p "<VSCE_TOKEN>"
+npx @vscode/vsce publish --packagePath inai-0.1.1.vsix -p "<VSCE_TOKEN>"
 ```
 
 Do not commit real tokens. Keep them in CI secrets or your local environment.

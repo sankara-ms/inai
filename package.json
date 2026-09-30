@@ -2,7 +2,7 @@
   "name": "inai",
   "displayName": "INAI",
   "description": "Provider-agnostic AI coding assistant with safe edits, agent tools, and local-first defaults (Ollama).",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "publisher": "inai",
   "license": "MIT",
   "engines": {
